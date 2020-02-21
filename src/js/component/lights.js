@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //create your first component
 export function Lights() {
@@ -37,9 +37,10 @@ export function Lights() {
 		backgroundColor: "black"
 	};
 
-	const [red, setred] = useState("on");
-	const [yellow, setyellow] = useState("on");
-	const [green, setgreen] = useState("on");
+	const [red, setred] = useState("off");
+	const [yellow, setyellow] = useState("off");
+	const [green, setgreen] = useState("off");
+	const [firstDigit, setfirstDigit] = useState(0);
 
 	useEffect(() => {
 		const timer = setInterval(() => {
@@ -47,37 +48,5 @@ export function Lights() {
 		}, 1000);
 	}, []);
 
-	return (
-		<div className="container text-center" style={traffic}>
-			<div
-				className="card mx-auto my-2"
-				style={red === "on" ? redStyles : plainStyles}
-				onClick={() => {
-					setred(red === "on" ? red : "on");
-					setyellow(red === "on" ? "off" : "off");
-					setgreen(red === "on" ? "off" : "off");
-				}}
-			/>
-
-			<div
-				className="card mx-auto my-2"
-				style={yellow === "on" ? yellowStyles : plainStyles}
-				onClick={() => {
-					setred(yellow === "on" ? "off" : "off");
-					setyellow(yellow === "on" ? yellow : "on");
-					setgreen(yellow === "on" ? "off" : "off");
-				}}
-			/>
-
-			<div
-				className="card mx-auto my-2"
-				style={green === "on" ? greenStyles : plainStyles}
-				onClick={() => {
-					setred(green === "on" ? "off" : "off");
-					setyellow(green === "on" ? "off" : "off");
-					setgreen(green === "on" ? green : "on");
-				}}
-			/>
-		</div>
-	);
+	return <p>{firstDigit % 11}</p>;
 }
