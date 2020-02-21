@@ -41,6 +41,12 @@ export function Lights() {
 	const [yellow, setyellow] = useState("on");
 	const [green, setgreen] = useState("on");
 
+	useEffect(() => {
+		const timer = setInterval(() => {
+			setfirstDigit(firstDigit => firstDigit + 1);
+		}, 1000);
+	}, []);
+
 	return (
 		<div className="container text-center" style={traffic}>
 			<div
